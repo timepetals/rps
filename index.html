@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    function getComputerChoice() {
+         val = Math.ceil(Math.random() * 3);
+        if (val == 1) {
+         return "Rock"   
+        } else if (val == 2) {
+            return "Paper"
+        } else if (val == 3) {
+            return "Scissors"
+        } else {
+            return "Oops! Something went wrong!"
+        }
+    }
+
+    let compChoice = getComputerChoice().toLowerCase;
+
+
+    function getHumanChoice() {
+        let val = parseInt(prompt("Enter a number from 1 to 3."));
+        
+        if (val == 1) {
+         return "Rock"   
+        } else if (val == 2) {
+            return "Paper"
+        } else if (val == 3) {
+            return "Scissors"
+        } else {
+            return "Instructions not followed. Try again."
+        }
+    }
+
+    /*let humChoice = getHumanChoice();*/
+
+
+    function playGame() {
+        let humanScore = 0;
+        let computerScore = 0;
+
+        function playRound(humanChoice, computerChoice) {
+        humanChoice = prompt("Rock, paper, or scissors?").toLowerCase();
+        console.log(humanChoice);
+        let comp = getComputerChoice().toLowerCase();
+        if (humanChoice == "rock") {
+            console.log(`Comp choice is: ${comp}.` );
+            if (comp == "rock") {
+                return "Rock. You tied."
+            } else if (comp == "paper") {
+                computerScore += 1;
+               return "Paper. You lose."
+            } else {
+                humanScore += 1;
+                return "Scissors. You win!"
+            }
+            
+        } else if (humanChoice == "paper") {
+            
+            console.log(`Comp choice is: ${comp}.` );
+            if (comp == "rock") {
+                humanScore += 1;
+                return "Rock. You win!"
+            } else if (comp == "paper") {
+               return "Paper. You tied."
+            } else {
+                computerScore += 1;
+                return "Scissors. You lose."
+            }  
+        } else if (humanChoice == "scissors") {
+            console.log(`Comp choice is: ${comp}.` );
+            if (comp == "rock") {
+                computerScore += 1;
+                return "Rock. You lose."
+            } else if (comp == "paper") {
+                humanScore += 1;
+               return "Paper. You win!"
+            } else {
+                return "Scissors. You tied."
+            }  
+        }
+    }
+    
+    for (let i = 1; i <= 5; i++) {
+        result = playRound();
+        console.log(result);
+    }
+
+    console.log(`Game has finished. Human score: ${humanScore}. Computer score: ${computerScore}`);
+}
+playGame();
+</script>
+<body><p>
+    This is a simple game of <strong>rock, paper, scissors.</strong><br>
+    You can play by opening the DeVTools console.
+</p>
+</body>
+</html>
